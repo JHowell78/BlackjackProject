@@ -1,8 +1,16 @@
-## Week 4: Blackjack Project
+## Blackjack Project
 
+Week #4 Homework Project for Skill Distillery Java Bootcamp
 
 ### Overview
 
+
+### New Techniques Used
+
+*
+*
+*
+*
 
 
 ### Technologies Used
