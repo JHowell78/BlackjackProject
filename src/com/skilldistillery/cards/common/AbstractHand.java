@@ -30,8 +30,7 @@ public abstract class AbstractHand {
 
 	public String toString() {
 //		return cards.toString();
-		return "Hand: " + cards + "";
-//		return ("Hand: ") + (cards);
+		return "Hand: " + cards + " ";
 	}
 	
 }

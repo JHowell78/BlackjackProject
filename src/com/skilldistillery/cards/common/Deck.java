@@ -18,7 +18,17 @@ public class Deck {
 				deck.add(new Card(rank, suit));
 			}
 		}
+		Collections.shuffle(deck);
 		return deck;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Deck [cards=");
+		builder.append(cards);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	public int checkDeckSize() {
