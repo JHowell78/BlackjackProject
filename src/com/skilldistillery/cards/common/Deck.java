@@ -18,7 +18,7 @@ public class Deck {
 				deck.add(new Card(rank, suit));
 			}
 		}
-		return null;
+		return deck;
 	}
 
 	public int checkDeckSize() {
@@ -33,5 +33,11 @@ public class Deck {
 	public Card dealCard() {
 		return cards.remove(0);
 	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	
 
 }

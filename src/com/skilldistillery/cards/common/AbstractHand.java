@@ -14,13 +14,24 @@ public abstract class AbstractHand {
 		cards.add(card);
 	}
 
-	public void clear() {
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
+
+	public void clearHand() {
 		cards.clear();
 	}
 
 	public abstract int getHandValue();
 
 	public String toString() {
-		return cards.toString();
+//		return cards.toString();
+		return "Hand: " + cards + "";
+//		return ("Hand: ") + (cards);
 	}
+	
 }
