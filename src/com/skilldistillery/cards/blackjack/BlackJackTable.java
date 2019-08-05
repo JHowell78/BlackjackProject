@@ -16,6 +16,44 @@ public class BlackJackTable {
 		dealer.pause();
 		dealer.dealerUpCard();
 		if (player.getHand().isBlackJack()) {
+			playAgain();
+			return;
+		}
+//		if (player.getHand().isBlackJack()) {
+//			System.out.println("BLACK JACK: PLAYER WINS!!!" + "\n");
+//			player.playerHandInfo();
+//			dealer.dealerHandInfo();
+//			playAgain();
+//			return;
+//		}
+//		if (dealer.getHand().isBlackJack()) {
+//			System.out.println("BLACK JACK: HOUSE WINS!!!" + "\n");
+//			dealer.dealerHandInfo();
+//			playAgain();
+//			return;
+//		}
+//		if (player.getHand().isBlackJack() && dealer.getHand().isBlackJack()) {
+//			System.out.println("Push" + "\n");
+//			dealer.dealerHandInfo();
+//			playAgain();
+//			return;
+//		}
+		System.out.println();
+		player.hitOrStay(dealer.getDeck(), kb);
+		if (player.getHand().isBust()) {
+			playAgain();
+			return;
+		}
+		player.playerHandInfo();
+		dealer.dealerHandInfo();
+		dealer.hitOrStay();
+		winningHand();
+		playAgain();
+		return;
+	}
+	
+	public void isBlackJackHand() {
+		if (player.getHand().isBlackJack()) {
 			System.out.println("BLACK JACK: PLAYER WINS!!!" + "\n");
 			player.playerHandInfo();
 			dealer.dealerHandInfo();
@@ -34,20 +72,7 @@ public class BlackJackTable {
 			playAgain();
 			return;
 		}
-		System.out.println();
-		player.hitOrStay(dealer.getDeck(), kb);
-		if (player.getHand().isBust()) {
-			playAgain();
-			return;
-		}
-		player.playerHandInfo();
-		dealer.dealerHandInfo();
-		dealer.hitOrStay();
-		winningHand();
-		playAgain();
-		return;
 	}
-
 	private void winningHand() {
 		if (dealer.getHand().isBust() && player.getHand().getHandValue() < 21) {
 			System.out.println();

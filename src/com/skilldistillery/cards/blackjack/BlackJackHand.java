@@ -27,7 +27,7 @@ public class BlackJackHand extends AbstractHand {
 		}
 		return isBust;
 	}
-	
+
 	public static int getBlackjack() {
 		return BLACKJACK;
 	}
