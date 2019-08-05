@@ -10,7 +10,7 @@ public class BlackJackTable {
 	private Player player = new Player();
 
 	public void playHand() {
-		System.out.println("There are " + dealer.getDeck().checkDeckSize() + " cards currently in the deck.\n");
+//		System.out.println("There are " + dealer.getDeck().checkDeckSize() + " cards currently in the deck.\n"); //displays current count of the deck
 		dealer.dealHand(player);
 		player.playerHandInfo();
 		dealer.pause();
@@ -82,7 +82,7 @@ public class BlackJackTable {
 		boolean play = true;
 		while (play) {
 			System.out.println();
-			System.out.print("Do you want to play again? (Y/N)? ");
+			System.out.print("Do you want to play again? (Y/N)? " + "\n");
 			String yesNo = kb.next();
 			if (yesNo.equalsIgnoreCase("Y")) {
 				player.getHand().clearHand();
@@ -93,7 +93,6 @@ public class BlackJackTable {
 			}
 			if (yesNo.equalsIgnoreCase("N")) {
 				System.out.println("Thank you for playing!");
-				System.out.println();
 				play = false;
 				break;
 			} else if ((!(yesNo.equalsIgnoreCase("Y") || (yesNo.equalsIgnoreCase("N"))))) {

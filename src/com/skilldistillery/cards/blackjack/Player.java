@@ -43,7 +43,7 @@ public class Player extends AbstractBlackJackPlayer {
 
 	public void playerHandInfo() {
 		System.out.println("Player " + this.getHand());
-		System.out.println("Player Hand: " + this.getHand().getHandValue() + "\n");
+		System.out.println("Player Hand Value: " + this.getHand().getHandValue() + "\n");
 	}
 	@Override
 	public boolean hitOrStay() {

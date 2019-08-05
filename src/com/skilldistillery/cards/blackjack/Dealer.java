@@ -22,7 +22,6 @@ public class Dealer extends AbstractBlackJackPlayer {
 			deck = new Deck();
 		}
 		for (int i = 0; i < numCardsToDeal; i++) {
-			// deal one card each
 			player.getHand().addCard(deck.dealCard());
 			this.getHand().addCard(deck.dealCard());
 		}
@@ -62,13 +61,15 @@ public class Dealer extends AbstractBlackJackPlayer {
 	}
 		return hit;
 	}
+	
 	public void dealerHandInfo() {
 		System.out.println("Dealer " + this.getHand());
 		System.out.println("Dealers Hand: " + this.getHand().getHandValue()+"\n");
 	}
+	
 	public void pause() {
 		 try {
-             sleep(1500);
+             sleep(2250);
          } catch (InterruptedException ex) {
          }
 	}
