@@ -15,32 +15,18 @@ public class BlackJackTable {
 		player.playerHandInfo();
 		dealer.pause();
 		dealer.dealerUpCard();
+		isBlackJackHand();
 		if (player.getHand().isBlackJack()) {
 			playAgain();
 			return;
 		}
-//		if (player.getHand().isBlackJack()) {
-//			System.out.println("BLACK JACK: PLAYER WINS!!!" + "\n");
-//			player.playerHandInfo();
-//			dealer.dealerHandInfo();
-//			playAgain();
-//			return;
-//		}
-//		if (dealer.getHand().isBlackJack()) {
-//			System.out.println("BLACK JACK: HOUSE WINS!!!" + "\n");
-//			dealer.dealerHandInfo();
-//			playAgain();
-//			return;
-//		}
-//		if (player.getHand().isBlackJack() && dealer.getHand().isBlackJack()) {
-//			System.out.println("Push" + "\n");
-//			dealer.dealerHandInfo();
-//			playAgain();
-//			return;
-//		}
 		System.out.println();
 		player.hitOrStay(dealer.getDeck(), kb);
 		if (player.getHand().isBust()) {
+			playAgain();
+			return;
+		}
+		if (dealer.getHand().isBlackJack()) {
 			playAgain();
 			return;
 		}
