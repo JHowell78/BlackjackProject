@@ -6,8 +6,31 @@ import com.skilldistillery.cards.common.Deck;
 
 public class BlackJackHand extends AbstractHand {
 
-	public boolean isBlackJack;
-	public boolean isBust;
+	private static final int BLACKJACK = 21;
+	private boolean isBlackJack;
+	private boolean isBust;
+
+	public boolean isBlackJack() {
+		if (this.getHandValue() == BLACKJACK) {
+			isBlackJack = true;
+		} else {
+			isBlackJack = false;
+		}
+		return isBlackJack;
+	}
+
+	public boolean isBust() {
+		if (this.getHandValue() > BLACKJACK) {
+			isBust = true;
+		} else {
+			isBust = false;
+		}
+		return isBust;
+	}
+	
+	public static int getBlackjack() {
+		return BLACKJACK;
+	}
 
 	@Override
 	public void clearHand() {
@@ -31,5 +54,4 @@ public class BlackJackHand extends AbstractHand {
 		}
 		return handValue;
 	}
-
 }

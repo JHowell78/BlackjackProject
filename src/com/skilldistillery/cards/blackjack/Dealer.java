@@ -1,15 +1,24 @@
 package com.skilldistillery.cards.blackjack;
+import static java.lang.Thread.sleep;
+
+import java.security.PublicKey;
 
 import com.skilldistillery.cards.common.Deck;
 
 public class Dealer extends AbstractBlackJackPlayer {
 
+	private static final int DEALER_MIN_SCORE = 17;
 	private int numCardsToDeal = 2;
 	private Deck deck = new Deck();
 
+	public void printDeck() {
+		System.out.println(deck);
+	}
+
 	public void dealHand(Player player) {
-		if (deck.checkDeckSize() < 20) {
-			System.out.println("Shuffling Deck");
+		if (deck.checkDeckSize() < 26) {
+			pause();
+			System.out.println("***   SHUFFLING DECK   ***" + "\n");
 			deck = new Deck();
 		}
 		for (int i = 0; i < numCardsToDeal; i++) {
@@ -18,50 +27,52 @@ public class Dealer extends AbstractBlackJackPlayer {
 			this.getHand().addCard(deck.dealCard());
 		}
 	}
-
+	public void dealerUpCard() {
+		System.out.println("Dealers Shows: " + this.getHand().getCards().get(0));
+		System.out.println("Dealers Show Card Value: " +  this.getHand().getCards().get(0).getValue() + "\n");
+	}
 	@Override
 	public boolean hitOrStay() {
 		boolean hit = true;
-		int cardIndex = 2;
+		int cardDrawn = 2;
 		while (hit) {
-//			if (this.getHand().getHandValue() == 21) {
-//				System.out.println("Black Jack!!!, House wins");
-//				break;
-//			}
-			while (this.getHand().getHandValue() < 17) {
-				System.out.println("Dealer under 17, Must take another card: ");
-				System.out.println();
-				this.getHand().addCard(deck.dealCard());
-				System.out.println("Dealer new card: " + this.getHand().getCards().get(cardIndex));
-				this.setHand(hand);
-				System.out.println("Dealer New  " + this.getHand());
-				System.out.println("Dealer New Hand Total: " + this.getHand().getHandValue());
-				System.out.println();
-				cardIndex++;
-				
-			}
-			if (this.getHand().getHandValue() == 21) {
-				System.out.println("Black Jack!!!, House wins");
-				System.out.println();
-				break;
-			}
-			if (this.getHand().getHandValue() > 21) {
-
-				hit = false;
-
-			} else {
-				System.out.println("Dealer Over 17, Must stay: ");
-				System.out.println();
-				hit = false;
-			}
+		while (this.getHand().getHandValue() < DEALER_MIN_SCORE) {
+			pause();
+			System.out.println("Dealer under 17, Must take another card: ");
+			System.out.println();
+			this.getHand().addCard(deck.dealCard());
+			System.out.println("Dealer draws: " + this.getHand().getCards().get(cardDrawn));
+			this.setHand(hand);
+			System.out.println("Dealer " + this.getHand());
+			System.out.println("Dealer Hand Total: " + this.getHand().getHandValue());
+			System.out.println();
+			cardDrawn++;
 		}
+
+		if (this.getHand().isBust()) {
+			pause();
+			System.out.println("BUST!");
+			hit = false;
+			break;
+		} 
+		  else {
+            	System.out.println("Dealer Over 17, Must stay: ");
+            	hit = false;
+		}
+	}
 		return hit;
 	}
 	public void dealerHandInfo() {
 		System.out.println("Dealer " + this.getHand());
-		System.out.println("Dealers Hand: " + this.getHand().getHandValue());
-		System.out.println();
+		System.out.println("Dealers Hand: " + this.getHand().getHandValue()+"\n");
 	}
+	public void pause() {
+		 try {
+             sleep(1500);
+         } catch (InterruptedException ex) {
+         }
+	}
+
 	public Deck getDeck() {
 		return deck;
 	}
@@ -70,4 +81,15 @@ public class Dealer extends AbstractBlackJackPlayer {
 		this.deck = deck;
 	}
 
+	public int getNumCardsToDeal() {
+		return numCardsToDeal;
+	}
+	
+	public void setNumCardsToDeal(int numCardsToDeal) {
+		this.numCardsToDeal = numCardsToDeal;
+	}
+	
+	public static int getDealerMinScore() {
+		return DEALER_MIN_SCORE;
+	}
 }
